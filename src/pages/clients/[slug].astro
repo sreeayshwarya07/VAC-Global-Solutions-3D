@@ -1,0 +1,451 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: "prabhu-textiles" },
+      props: {
+        client: {
+          name: "Prabhu Textiles",
+          industry: "Textile Manufacturing",
+          location: "Coimbatore, Tamil Nadu",
+          size: "200–500 employees",
+          founded: "1998",
+          engagement: "ERP Implementation & Operations Consulting",
+          duration: "30 days implementation, ongoing support",
+          color: "#002D62",
+          initials: "PT",
+          overview: "Prabhu Textiles is one of Coimbatore's leading mid-size textile manufacturers with 4 production facilities and a direct export business. When they came to VAC, their operations were running entirely on Excel sheets and WhatsApp groups — creating daily chaos in inventory, production scheduling, and procurement.",
+          challenge: "With 4 disconnected factories, zero real-time inventory visibility, and a manual purchase order process taking up to 3 days, Prabhu Textiles was losing approximately ₹40 lakhs per month in waste, overstock, and production delays.",
+          solution: "VAC deployed a unified manufacturing ERP across all 4 factories within 30 days. The system included real-time inventory management, automated purchase triggers, production scheduling boards, and a management dashboard visible to leadership from any device.",
+          results: [
+            { metric: "40%", label: "Reduction in inventory waste" },
+            { metric: "₹48L", label: "Saved in year one" },
+            { metric: "30 days", label: "Full go-live" },
+            { metric: "3 days→4hrs", label: "PO processing time" }
+          ],
+          testimonial: {
+            quote: "VAC didn't just sell us software. They understood our factory floor and built a system our supervisors could actually use. The difference in 60 days was night and day.",
+            author: "Murugesan P.",
+            role: "Managing Director, Prabhu Textiles"
+          },
+          services: ["ERP Deployment", "Inventory Management", "Production Scheduling", "Procurement Automation", "Staff Training"]
+        }
+      }
+    },
+    {
+      params: { slug: "novamed-healthcare" },
+      props: {
+        client: {
+          name: "NovaMed Healthcare",
+          industry: "Healthcare & Clinics",
+          location: "Bangalore, Karnataka",
+          size: "50–100 employees",
+          founded: "2014",
+          engagement: "Healthcare ERP & Compliance System",
+          duration: "45 days implementation",
+          color: "#7C3AED",
+          initials: "NM",
+          overview: "NovaMed Healthcare operates 3 multi-specialty clinics in Bangalore. Rapid growth left them with fragmented patient records, billing inconsistencies, and growing compliance exposure ahead of a regulatory audit.",
+          challenge: "Non-compliant patient records across 3 locations, manual billing causing revenue leakage, and a regulatory audit deadline created an urgent need for a complete digital overhaul.",
+          solution: "VAC implemented a healthcare-specific ERP with HIPAA-aligned data management, role-based access control, automated billing reconciliation, and a real-time compliance dashboard.",
+          results: [
+            { metric: "100%", label: "Compliance achieved" },
+            { metric: "0", label: "Audit findings" },
+            { metric: "60%", label: "Admin time saved" },
+            { metric: "₹18L", label: "Billing leakage recovered" }
+          ],
+          testimonial: {
+            quote: "We had an audit coming and we were genuinely worried. VAC turned our compliance problem into a competitive advantage — we passed with zero findings.",
+            author: "Dr. Sneha Nair",
+            role: "COO, NovaMed Healthcare"
+          },
+          services: ["Healthcare ERP", "Compliance Management", "Billing Automation", "Audit Readiness", "Data Migration"]
+        }
+      }
+    }
+  ];
+}
+
+const { client } = Astro.props;
+---
+
+<Layout
+  title={`${client.name} Case Study — VAC Global Solutions`}
+  description={`See how VAC Global Solutions helped ${client.name} in ${client.industry} achieve measurable results through ERP implementation and business transformation.`}
+>
+  <Navbar />
+
+  <main class="profile-page">
+
+    <!-- Hero Banner -->
+    <div class="profile-hero" style={`--accent: ${client.color}`}>
+      <div class="container">
+        <a href="/#portfolio" class="back-link">
+          ← Back to Portfolio
+        </a>
+        <div class="profile-hero-inner">
+          <div class="profile-avatar" style={`background:${client.color}`}>
+            {client.initials}
+          </div>
+          <div>
+            <div class="profile-tag">{client.industry}</div>
+            <h1 class="profile-name">{client.name}</h1>
+            <div class="profile-meta-row">
+              <span>📍 {client.location}</span>
+              <span>👥 {client.size}</span>
+              <span>🗓 Since {client.founded}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container profile-body">
+      <div class="profile-grid">
+
+        <!-- Main Content -->
+        <div class="profile-main">
+
+          <div class="content-section">
+            <h2 class="cs-heading">Client Overview</h2>
+            <p class="cs-text">{client.overview}</p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="cs-heading">The Challenge</h2>
+            <p class="cs-text">{client.challenge}</p>
+          </div>
+
+          <div class="content-section">
+            <h2 class="cs-heading">VAC's Solution</h2>
+            <p class="cs-text">{client.solution}</p>
+          </div>
+
+          <!-- Results Grid -->
+          <div class="content-section">
+            <h2 class="cs-heading">Results Delivered</h2>
+            <div class="results-grid">
+              {client.results.map(r => (
+                <div class="result-card">
+                  <span class="rc-metric" style={`color:${client.color}`}>{r.metric}</span>
+                  <span class="rc-label">{r.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Testimonial -->
+          <blockquote class="testimonial-block" style={`border-left-color:${client.color}`}>
+            <p class="testimonial-text">"{client.testimonial.quote}"</p>
+            <footer class="testimonial-author">
+              <strong>{client.testimonial.author}</strong>
+              <span>{client.testimonial.role}</span>
+            </footer>
+          </blockquote>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+          <div class="sidebar-card">
+            <h3 class="sidebar-heading">Engagement Details</h3>
+            <div class="detail-list">
+              <div class="detail-item">
+                <span class="detail-label">Type</span>
+                <span class="detail-value">{client.engagement}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Timeline</span>
+                <span class="detail-value">{client.duration}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Industry</span>
+                <span class="detail-value">{client.industry}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Location</span>
+                <span class="detail-value">{client.location}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3 class="sidebar-heading">Services Delivered</h3>
+            <ul class="services-list">
+              {client.services.map(s => (
+                <li class="service-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="sidebar-cta">
+            <p>Ready for similar results?</p>
+            <a href="/#contact" class="btn btn-primary" style="width:100%;text-align:center;justify-content:center;">
+              Book a Free Demo
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.profile-page { padding-top: 80px; }
+
+.profile-hero {
+  background: var(--primary);
+  padding: 5rem 0 4rem;
+  position: relative;
+}
+
+.back-link {
+  display: inline-block;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s;
+}
+.back-link:hover { color: #fff; }
+
+.profile-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #fff;
+  border: 3px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+.profile-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.5rem;
+}
+
+.profile-name {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.profile-meta-row {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  flex-wrap: wrap;
+}
+
+.profile-body {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.content-section {
+  margin-bottom: 3rem;
+}
+
+.cs-heading {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.cs-text {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.result-card {
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.rc-metric {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.rc-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.testimonial-block {
+  background: var(--neutral);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 16px 16px 0;
+  padding: 2rem 2.5rem;
+  margin: 0;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.testimonial-author strong {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.testimonial-author span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Sidebar */
+.sidebar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-heading {
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.services-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.service-item svg { color: #3db771; flex-shrink: 0; }
+
+.sidebar-cta {
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-align: center;
+}
+
+.sidebar-cta p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-hero-inner { flex-direction: column; align-items: flex-start; }
+  .results-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .results-grid { grid-template-columns: 1fr; }
+  .profile-meta-row { flex-direction: column; gap: 0.5rem; }
+}
+</style>

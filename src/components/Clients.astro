@@ -1,0 +1,389 @@
+---
+const clients = [
+  {
+    name: "Prabhu Textiles",
+    industry: "Manufacturing",
+    location: "Coimbatore, TN",
+    result: "40% reduction in inventory waste",
+    logo: "PT",
+    color: "#002D62"
+  },
+  {
+    name: "Sri Balaji Logistics",
+    industry: "Logistics & Supply Chain",
+    location: "Chennai, TN",
+    result: "3x faster dispatch cycle",
+    logo: "SB",
+    color: "#1E4FA0"
+  },
+  {
+    name: "Kaveri Agro Exports",
+    industry: "Agri-Business",
+    location: "Trichy, TN",
+    result: "₹1.2Cr saved in first year",
+    logo: "KA",
+    color: "#3db771"
+  },
+  {
+    name: "NovaMed Healthcare",
+    industry: "Healthcare",
+    location: "Bangalore, KA",
+    result: "100% compliance achieved",
+    logo: "NM",
+    color: "#7C3AED"
+  },
+  {
+    name: "Apex Steel Works",
+    industry: "Steel & Metal",
+    location: "Salem, TN",
+    result: "28% production efficiency gain",
+    logo: "AS",
+    color: "#DC2626"
+  },
+  {
+    name: "Sriram Auto Parts",
+    industry: "Automotive",
+    location: "Hosur, TN",
+    result: "ERP live in 45 days",
+    logo: "SA",
+    color: "#D97706"
+  },
+];
+
+const logos = [
+  "Prabhu Textiles", "Sri Balaji Logistics", "Kaveri Agro",
+  "NovaMed", "Apex Steel", "Sriram Auto", "TechBridge Corp",
+  "Prism Finance", "IndoFab Ltd", "Sunrise Exports"
+];
+---
+
+<section id="clients" class="section clients-section" aria-labelledby="clients-heading">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header reveal">
+      <div class="tag">Trusted By Industry Leaders</div>
+      <h2 id="clients-heading" class="section-title">
+        Companies That Chose VAC to Transform Their Business
+      </h2>
+      <p class="section-sub">
+        From Tamil Nadu manufacturers to global exporters — here's who trusts VAC Global Solutions
+        to run their most critical operations.
+      </p>
+    </div>
+
+    <!-- Logo Ticker -->
+    <div class="logo-ticker-wrap reveal">
+      <div class="logo-ticker">
+        <div class="ticker-track">
+          {logos.map(l => (
+            <div class="ticker-item">
+              <span class="ticker-logo">{l}</span>
+            </div>
+          ))}
+          {logos.map(l => (
+            <div class="ticker-item" aria-hidden="true">
+              <span class="ticker-logo">{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Cards Grid -->
+    <div class="clients-grid">
+      {clients.map((client, i) => (
+        <article class={`client-card reveal stagger-${(i % 3) + 1}`}>
+          <div class="card-top">
+            <div class="client-avatar" style={`background:${client.color};`}>
+              {client.logo}
+            </div>
+            <div class="client-meta">
+              <h3 class="client-name">{client.name}</h3>
+              <span class="client-industry">{client.industry}</span>
+            </div>
+          </div>
+          <div class="client-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            {client.location}
+          </div>
+          <div class="client-result">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            {client.result}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Social Proof Strip -->
+    <div class="proof-strip reveal">
+      <div class="proof-quote">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="var(--primary)" opacity="0.15"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
+        <p class="proof-text">
+          VAC's ERP implementation cut our monthly closing from 7 days to 2 days. The ROI
+          was visible within the first quarter. Best technology investment we've made.
+        </p>
+        <div class="proof-author">
+          <div class="author-avatar">RK</div>
+          <div>
+            <strong>Rajesh Kumar</strong>
+            <span>CFO, Apex Steel Works</span>
+          </div>
+        </div>
+      </div>
+      <div class="proof-numbers">
+        <div class="proof-num-item">
+          <span class="pn-value">50+</span>
+          <span class="pn-label">Active Clients</span>
+        </div>
+        <div class="proof-num-item">
+          <span class="pn-value">₹20Cr+</span>
+          <span class="pn-label">Client Savings Generated</span>
+        </div>
+        <div class="proof-num-item">
+          <span class="pn-value">4.9★</span>
+          <span class="pn-label">Average Client Rating</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.clients-section {
+  background: var(--white);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Logo Ticker */
+.logo-ticker-wrap {
+  overflow: hidden;
+  margin-bottom: 4rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 28s linear infinite;
+  width: max-content;
+}
+
+.ticker-item {
+  padding: 0 3rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.ticker-logo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.ticker-logo:hover { opacity: 1; }
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Client Cards */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.client-card {
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.75rem;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+
+.client-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,45,98,0.08);
+  border-color: var(--primary);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.client-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.client-name {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.client-industry {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.client-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.client-result {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3db771;
+  background: rgba(61,183,113,0.08);
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+}
+
+/* Social Proof Strip */
+.proof-strip {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 3rem;
+  align-items: center;
+}
+
+.proof-quote {
+  position: relative;
+}
+
+.proof-text {
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 1rem 0 1.5rem;
+}
+
+.proof-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.proof-author strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.proof-author span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.proof-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.proof-num-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--primary);
+}
+
+.pn-value {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+}
+
+.pn-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  .proof-strip { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .clients-grid { grid-template-columns: 1fr; }
+}
+</style>

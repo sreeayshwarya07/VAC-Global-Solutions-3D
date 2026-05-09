@@ -1,0 +1,199 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+const {
+  title = 'VAC Global Solutions — ERP & SaaS Consulting for SMEs',
+  description = 'VAC Global Solutions is a next-generation SaaS-driven consulting firm. We implement ERP systems, streamline operations, and transform SMEs into scalable enterprises. Trusted by 50+ clients across 10+ industries.',
+  canonical = 'https://www.vacglobalsolutions.com',
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "VAC Global Solutions",
+  "url": canonical,
+  "logo": `${canonical}/favicon.svg`,
+  "description": description,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Trichy",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-800-VAC-GLOB",
+    "contactType": "customer service",
+    "email": "info@vacglobal.com"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/vac-global-solutions",
+    "https://twitter.com/vacglobalsol"
+  ]
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="VAC Global Solutions" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@vacglobalsol" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/global.css" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+</head>
+<body>
+  <div id="parallax-group">
+    <div class="gl-parallax gl-p1"><div class="global-light-1"></div></div>
+    <div class="gl-parallax gl-p2"><div class="global-light-2"></div></div>
+    <div class="gl-parallax gl-p3"><div class="global-light-3"></div></div>
+  </div>
+  <div class="noise-overlay"></div>
+  <canvas id="particles-canvas"></canvas>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <slot />
+  <script>
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navbar scroll effect
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    menuBtn?.addEventListener('click', () => {
+      mobileOverlay?.classList.toggle('open');
+      menuBtn.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#mobile-overlay a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileOverlay?.classList.remove('open');
+        menuBtn?.classList.remove('active');
+      });
+    });
+
+    /* CURSOR */
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursor-ring');
+    document.addEventListener('mousemove', e => {
+      if(cursor) { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; }
+      if(cursorRing) { cursorRing.style.left = e.clientX + 'px'; cursorRing.style.top = e.clientY + 'px'; }
+    });
+
+    /* GLOBAL LIGHTING PARALLAX */
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const l1 = document.querySelector('.gl-p1');
+      const l2 = document.querySelector('.gl-p2');
+      const l3 = document.querySelector('.gl-p3');
+      if(l1) l1.style.transform = `translateY(${scrolled * 0.15}px) translateX(${scrolled * 0.05}px)`;
+      if(l2) l2.style.transform = `translateY(${-scrolled * 0.1}px) translateX(${-scrolled * 0.08}px)`;
+      if(l3) l3.style.transform = `translateY(${scrolled * 0.08}px) translateX(${-scrolled * 0.04}px)`;
+    });
+
+    /* PARTICLES SYSTEM */
+    const canvas = document.getElementById('particles-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+
+      function initParticles() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        particles = [];
+        const numParticles = Math.floor(width * height / 15000);
+        for (let i = 0; i < numParticles; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 1.5 + 0.5,
+            dx: (Math.random() - 0.5) * 0.3,
+            dy: (Math.random() - 0.5) * 0.3,
+            opacity: Math.random() * 0.5 + 0.1
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > width) p.dx *= -1;
+          if (p.y < 0 || p.y > height) p.dy *= -1;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(drawParticles);
+      }
+
+      initParticles();
+      drawParticles();
+      window.addEventListener('resize', initParticles);
+    }
+  </script>
+</body>
+</html>

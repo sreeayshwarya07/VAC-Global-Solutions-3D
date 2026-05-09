@@ -1,0 +1,291 @@
+---
+const projects = [
+  {
+    id: "01",
+    client: "Prabhu Textiles",
+    industry: "Manufacturing",
+    challenge: "Disconnected Excel sheets across 4 factories causing inventory errors and production delays costing ₹40L/month.",
+    solution: "Implemented a unified ERP across all factories with real-time inventory tracking, production scheduling and automated purchase orders.",
+    results: [
+      { metric: "40%", label: "Inventory waste cut" },
+      { metric: "₹48L", label: "Annual savings" },
+      { metric: "30 days", label: "Go-live time" }
+    ],
+    tags: ["ERP Implementation", "Inventory", "Manufacturing"],
+    accent: "#002D62"
+  },
+  {
+    id: "02",
+    client: "Sri Balaji Logistics",
+    industry: "Logistics",
+    challenge: "Paper-based dispatch system causing a 72-hour average delivery cycle and zero shipment visibility for clients.",
+    solution: "End-to-end digital logistics platform with GPS tracking, automated POD, and customer-facing shipment portal.",
+    results: [
+      { metric: "3x", label: "Faster dispatch" },
+      { metric: "100%", label: "Shipment visibility" },
+      { metric: "92%", label: "Customer satisfaction" }
+    ],
+    tags: ["Digital Transformation", "Logistics", "SaaS"],
+    accent: "#1E4FA0"
+  },
+  {
+    id: "03",
+    client: "NovaMed Healthcare",
+    industry: "Healthcare",
+    challenge: "Non-compliant patient records management risking regulatory penalties and data breaches across 3 clinic locations.",
+    solution: "HIPAA-aligned healthcare ERP with role-based access, audit trails, and automated compliance reporting.",
+    results: [
+      { metric: "100%", label: "Compliance achieved" },
+      { metric: "0", label: "Audit findings" },
+      { metric: "60%", label: "Admin time saved" }
+    ],
+    tags: ["Healthcare", "Compliance", "ERP"],
+    accent: "#7C3AED"
+  }
+];
+---
+
+<section id="portfolio" class="section portfolio-section" aria-labelledby="portfolio-heading">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="tag">Client Portfolio</div>
+      <h2 id="portfolio-heading" class="section-title">
+        Real Transformations. Measurable Results.
+      </h2>
+      <p class="section-sub">
+        Each engagement is a case study in operational excellence. Here are some of the
+        transformations we're most proud of.
+      </p>
+    </div>
+
+    <div class="portfolio-stack">
+      {projects.map((p, i) => (
+        <article class={`project-card reveal stagger-${i + 1}`}>
+          <div class="project-id" style={`color:${p.accent};opacity:0.15;`}>{p.id}</div>
+
+          <div class="project-body">
+            <div class="project-header">
+              <div>
+                <div class="project-tags">
+                  {p.tags.map(t => <span class="ptag">{t}</span>)}
+                </div>
+                <h3 class="project-title">{p.client}</h3>
+                <span class="project-industry">{p.industry}</span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-block">
+                <h4 class="block-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  The Challenge
+                </h4>
+                <p class="block-text">{p.challenge}</p>
+              </div>
+              <div class="project-block">
+                <h4 class="block-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  Our Solution
+                </h4>
+                <p class="block-text">{p.solution}</p>
+              </div>
+            </div>
+
+            <div class="project-results">
+              {p.results.map(r => (
+                <div class="result-pill">
+                  <span class="result-metric" style={`color:${p.accent}`}>{r.metric}</span>
+                  <span class="result-label">{r.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="portfolio-cta reveal">
+      <p>Want to see what VAC can do for your business?</p>
+      <a href="#contact" class="btn btn-primary">Get Your Free Assessment →</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.portfolio-section {
+  background: var(--neutral);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.portfolio-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 3rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 60px rgba(0,45,98,0.09);
+  border-color: rgba(0,45,98,0.3);
+}
+
+.project-id {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-family: var(--font-head);
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.project-header {
+  margin-bottom: 2rem;
+}
+
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.ptag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  background: rgba(0,45,98,0.07);
+  color: var(--primary);
+}
+
+.project-title {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.02em;
+}
+
+.project-industry {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.block-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.block-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.project-results {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.result-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: var(--neutral);
+  border-radius: 12px;
+  padding: 0.85rem 1.5rem;
+  min-width: 120px;
+}
+
+.result-metric {
+  font-family: var(--font-head);
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.result-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.portfolio-cta {
+  text-align: center;
+  padding: 3rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.portfolio-cta p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .project-card { padding: 2rem; }
+  .project-content { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-id { font-size: 3.5rem; }
+}
+</style>
