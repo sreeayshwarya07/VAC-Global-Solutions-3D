@@ -1,34 +1,69 @@
-# VAC Global Solutions — Website
+# VAC Global Solutions — Next-Gen ERP Consulting
 
-A modern, premium, animated marketing website for VAC Global Solutions built with **Astro**.
+🌐 **Live Site:** https://vac-global-solutions.netlify.app/
 
-## Brand Colors
+---
 
-| Token       | Hex       | Usage                     |
-|-------------|-----------|---------------------------|
-| Primary     | `#002D62` | Navy blue — main brand    |
-| Secondary   | `#64748B` | Slate — supporting text   |
-| Tertiary    | `#541D02` | Dark brown-red — accents  |
-| Neutral     | `#F8FAFC` | Off-white — backgrounds   |
+## About
 
-## Typography
+VAC Global Solutions is a SaaS-driven ERP consulting firm based in Trichy, Tamil Nadu. This is the official company website showcasing services, client results, and pricing.
 
-- **Headlines:** Manrope (Google Fonts)
-- **Body:** Inter (Google Fonts)
+---
 
-## Sections
+## Tech Stack
 
-1. **Hero** — Full-screen gradient hero with animated blobs, floating ERP card, and key stats
-2. **About** — Who We Are with three pillars (Technology-First, Operations Focus, Global Reach)
-3. **Challenge** — Why businesses struggle to scale (3 pain points)
-4. **Services** — 4 service cards (Supply Chain, Digital, Marketing, ERP)
-5. **ERP** — ERP platform overview with 6 modules
-6. **Process** — 4-step engagement model (Analyze → Design → Implement → Scale)
-7. **Outcomes** — Key metrics (40% efficiency, 25% cost reduction, 3× visibility)
-8. **Pricing** — 4 pricing tiers (Starter, Growth ★, Scale, Custom OS)
-9. **Industries** — 5 industry cards
-10. **Contact** — CTA block with email, phone, website
-11. **Footer** — Full footer with links and copyright
+* **Astro 4.x** — Static site framework
+* **Three.js r128** — 3D hero scene with wireframe geometry and particles
+* **Vanilla CSS** — Custom design system with CSS variables
+* **Netlify** — Hosting and deployment
+
+---
+
+## Features
+
+* 3D animated hero with Three.js (floating shapes, particle field, dome glow)
+* Scroll-triggered reveal animations
+* Animated stat counters
+* Infinite client ticker
+* Custom cursor
+* Fully responsive with mobile menu
+* Glassmorphism card design
+
+---
+
+## Project Structure
+
+```bash
+Vac-Website-master/
+├── src/
+│   ├── components/
+│   │   ├── Outcomes.astro
+│   │   ├── Portfolio.astro
+│   │   ├── Pricing.astro
+│   │   ├── Process.astro
+│   │   └── Services.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   ├── clients/
+│   │   │   └── [slug].astro
+│   │   ├── about.astro
+│   │   ├── erp.astro
+│   │   ├── index.astro
+│   │   ├── pricing.astro
+│   │   ├── process.astro
+│   │   ├── services.astro
+│   │   └── vac3d.astro
+│   └── styles/
+├── env.d.ts
+├── middleware.ts
+├── .gitignore
+├── astro.config.mjs
+├── package.json
+└── README.md
+```
+
+---
 
 ## Getting Started
 
@@ -36,43 +71,28 @@ A modern, premium, animated marketing website for VAC Global Solutions built wit
 # Install dependencies
 npm install
 
-# Run dev server (localhost:4321)
-npm run dev
+# Start dev server
+npm run dev         # http://localhost:4321
 
 # Build for production
 npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## Animations
-
-- **Scroll-reveal** — Elements fade + slide in using IntersectionObserver (no dependencies)
-- **Floating card** — CSS keyframe animation on the hero ERP card
-- **Gradient blobs** — Animated radial gradient blobs in hero background
-- **Hover interactions** — Cards lift with box-shadow on hover throughout
-- **Staggered entrance** — `.stagger-1` through `.stagger-5` delay classes
-- **Navbar** — Transparent → frosted glass on scroll
+---
 
 ## Deployment
 
-This is a static site. After `npm run build`, upload the `dist/` folder to:
-- Netlify
-- Vercel
-- GitHub Pages
-- Any static host
+Hosted on Netlify. Build settings:
 
-## File Structure
+* **Build command:** `npm run build`
+* **Publish directory:** `dist`
 
-```
-src/
-  layouts/     Layout.astro (HTML shell + scroll observer script)
-  components/  Navbar, Hero, About, Challenge, Services, ERP,
-               Process, Outcomes, Pricing, Industries, Contact, Footer
-  pages/       index.astro
-  styles/      global.css
-public/
-  favicon.svg
-  styles/      global.css (served statically)
-```
+---
+
+## Contact
+
+📍 Trichy, Tamil Nadu, India
+📧 [info@vacglobal.com](mailto:info@vacglobal.com)
+📞 +91 98765 43210
+
+© 2025 VAC Global Solutions. All rights reserved.
