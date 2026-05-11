@@ -1,6 +1,6 @@
 # VAC Global Solutions — Next-Gen ERP Consulting
 
-🌐 **Live Site:** https://vac-global-solutions.netlify.app/
+🌐 **Live Site:**https://vacglobalsolution.netlify.app/
 
 ---
 
